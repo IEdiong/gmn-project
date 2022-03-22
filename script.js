@@ -1,13 +1,12 @@
 'use strict';
 
-const checkBtn = document.querySelector('.check');
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = Number(document.querySelector('.score').textContent);
 
 // State of the game
 let highscore = 0;
 
-checkBtn.addEventListener('click', function () {
+document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
   // console.log(guess, typeof guess);
 
@@ -26,22 +25,11 @@ checkBtn.addEventListener('click', function () {
     highscore = highscore > score ? highscore : score;
     document.querySelector('.highscore').textContent = highscore;
 
-    // When the guess is too high
-  } else if (guess > secretNumber) {
+    // When guess is wrong
+  } else if (guess !== secretNumber) {
     if (score > 1) {
-      document.querySelector('.message').textContent = '📈 Too High!';
-      score--;
-      document.querySelector('.score').textContent = score;
-    } else {
-      document.querySelector('.message').textContent = '💥 You Lost the Game';
-      score = 0;
-      document.querySelector('.score').textContent = score;
-    }
-
-    // When the guess is too low
-  } else {
-    if (score > 1) {
-      document.querySelector('.message').textContent = '📉 Too Low!';
+      document.querySelector('.message').textContent =
+        guess > secretNumber ? '📈 Too High!' : '📉 Too Low!';
       score--;
       document.querySelector('.score').textContent = score;
     } else {
