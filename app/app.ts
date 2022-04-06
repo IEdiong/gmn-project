@@ -11,11 +11,11 @@ let currentScore = 20;
 let playing = true;
 
 const resetGame = function () {
-  number.textContent = '?';
+  number!.textContent = '?';
   (<HTMLInputElement>document.querySelector('.guess')).value = '';
-  score.textContent = String(20);
+  score!.textContent = String(20);
   currentScore = 20;
-  messageEl.textContent = 'Start guessing...';
+  messageEl!.textContent = 'Start guessing...';
   secretNumber = Math.floor(Math.random() * 20) + 1;
   playing = true;
 };
@@ -27,25 +27,25 @@ checkBtn!.addEventListener('click', function () {
       .value;
 
     if (guessNumber === 0 || guessNumber > 20)
-      return (messageEl.textContent = 'Please make a guess!!');
+      return (messageEl!.textContent = 'Please make a guess!!');
     else {
       if (guessNumber === secretNumber) {
-        messageEl.textContent = 'Correct guess!!';
+        messageEl!.textContent = 'Correct guess!!';
         number!.textContent = String(secretNumber);
-        let currentHi = +highscore.textContent;
+        let currentHi = +!highscore!.textContent;
         if (currentScore > currentHi) {
-          highscore.textContent = String(currentScore);
+          highscore!.textContent = String(currentScore);
         }
         playing = false;
       } else if (guessNumber !== secretNumber) {
-        messageEl.textContent =
+        messageEl!.textContent =
           guessNumber < secretNumber ? 'Too low' : 'Too high';
         currentScore--;
-        score.textContent = String(currentScore);
+        score!.textContent = String(currentScore);
       }
     }
   }
 });
 
 // Again Button
-againBtn.addEventListener('click', resetGame);
+againBtn!.addEventListener('click', resetGame);

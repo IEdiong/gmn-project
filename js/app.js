@@ -1,3 +1,4 @@
+"use strict";
 var number = document.querySelector('.number');
 var messageEl = document.querySelector('.message');
 var score = document.querySelector('.score');
@@ -28,7 +29,7 @@ checkBtn.addEventListener('click', function () {
             if (guessNumber === secretNumber) {
                 messageEl.textContent = 'Correct guess!!';
                 number.textContent = String(secretNumber);
-                var currentHi = +highscore.textContent;
+                var currentHi = +!highscore.textContent;
                 if (currentScore > currentHi) {
                     highscore.textContent = String(currentScore);
                 }
