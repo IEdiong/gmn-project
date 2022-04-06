@@ -20,7 +20,8 @@ var resetGame = function () {
 // Check Button
 checkBtn.addEventListener('click', function () {
     if (playing) {
-        var guessNumber = +document.querySelector('.guess').value;
+        var guessNumber = +document.querySelector('.guess')
+            .value;
         if (guessNumber === 0 || guessNumber > 20)
             return (messageEl.textContent = 'Please make a guess!!');
         else {

@@ -12,7 +12,7 @@ let playing = true;
 
 const resetGame = function () {
   number.textContent = '?';
-  document.querySelector('.guess').value = '';
+  (<HTMLInputElement>document.querySelector('.guess')).value = '';
   score.textContent = String(20);
   currentScore = 20;
   messageEl.textContent = 'Start guessing...';
@@ -23,7 +23,8 @@ const resetGame = function () {
 // Check Button
 checkBtn!.addEventListener('click', function () {
   if (playing) {
-    const guessNumber = +document.querySelector('.guess').value;
+    const guessNumber = +(<HTMLInputElement>document.querySelector('.guess'))
+      .value;
 
     if (guessNumber === 0 || guessNumber > 20)
       return (messageEl.textContent = 'Please make a guess!!');
